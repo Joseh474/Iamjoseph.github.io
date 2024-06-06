@@ -9,14 +9,24 @@
 }
 
 :root{
-    --bg-color: #2a2a2a;
-    --second-bg-color:#202020;
+    --bg-color: #3d3b3b;
+    --second-bg-color:#000000;
     --text-color:#fff;
     --second-color:#ccc;
     --main-color:#ff4d05;
     --big-font:5rem;
     --h2-font:3rem;
     --p-font:1.1rem;
+}
+.dark-theme{
+    --bg-color: rgb(224, 219, 219);
+    --second-bg-color:white;
+    --text-color:#1b1919;
+    --second-color:#0c0c0c;
+}
+#icon{
+    width: 30px;
+    cursor: pointer;
 }
 
 body{
@@ -71,6 +81,11 @@ span{
 .navlist a.active{
     color: var(--main-color);
 }
+.nav ul{
+    flex: 1;
+    text-align: right;
+
+}
 
 #menu-icon{
     font-size: 35px;
@@ -89,9 +104,7 @@ section{
     position: relative;
     height: 100vh;
     width: 100%;
-    background-image: url('image/SM.jpg');
-    background-position: center;
-    background-size: cover;
+    background-color: var(--second-bg-color);
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -197,7 +210,7 @@ section{
 }
 
 header.sticky{
-    background: var(--bg-color);
+    background: var(--second-bg-color);
     border-bottom: 1px solid #ffffff1a;
     padding: 12px 15%;
 }
@@ -370,7 +383,7 @@ h4{
 .layer{
     width: 100%;
     height: 0;
-    background: linear-gradient(rgba(0,0,0,0.1), #1a0cd8);
+    background: linear-gradient(rgba(0,0,0,0.1), #fbfbfc);
     position: absolute ;
     border-radius: 8px;
     left: 0;
@@ -540,6 +553,65 @@ form textarea{
     background: var(--main-color);
 
 }
+ 
+footer {
+    display: flex;
+  }
+  
+  .footerLeft {
+    flex: 2;
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+  }
+  
+  .fMenuTitle {
+    font-size: 16px;
+  }
+  
+  .fList {
+    padding: 0;
+    list-style: none;
+  }
+  
+  .fListItem {
+    margin-bottom: 10px;
+    color: gray;
+    cursor: pointer;
+  }
+  
+  .footerRight {
+    flex: 1;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .fInput {
+    padding: 5px;
+  }
+  
+  .fButton {
+    padding: 5px;
+    background-color: black;
+    color: white;
+  }
+  
+  .fIcons{
+    display: flex;
+  }
+  
+  .fIcon{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
+  
+  .copyright{
+    font-weight: 300;
+    font-size: 14px;
+  }
 
 @media(max-width: 1480px){
     header{
