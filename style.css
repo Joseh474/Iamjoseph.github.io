@@ -81,9 +81,6 @@ span{
 .navlist a.active{
     color: var(--main-color);
 }
-.nav ul{
-    flex: 1;
-    text-align: right;
 
 }
 
