@@ -18,6 +18,7 @@
     --big-font:5rem;
     --h2-font:3rem;
     --p-font:1.1rem;
+    --forth-bg-color:rgb(66, 61, 61);
 }
 body.dark{
     --bg-color: linear-gradient(135deg, #ffffff, #ffff99);
@@ -25,6 +26,7 @@ body.dark{
     --text-color:#0f0f0d;
     --second-color:#020101;
     --third-bg-color:white;
+     --forth-bg-color:yellow;
 }
 .toggle{
     height: 17px;
@@ -150,19 +152,19 @@ section{
 }
 
 .home::before {
-    content: '';
+   content: '';
     background: var(--second-bg-color);
     position: absolute;
     top: 0;
     right: 0;
     width: 0;
     height: 0;
-    border-right: 50vw solid var(--main-color);
-    border-bottom: 100vh solid var(--main-color)  ;
+    border-right: 50vw solid var(--forth-bg-color);
+    border-bottom: 100vh solid var(--forth-bg-color);
     z-index:0;
-    box-shadow: 0 0 5px var(--main-color),
-    0 0 25px var(--main-color), 0 0 50px var(--main-color),
-    0 0 100px var(--main-color), 0 0 200px var(--main-color);
+    box-shadow: 0 0 5px var(--forth-bg-color),
+    0 0 25px var(--forth-bg-color), 0 0 50px var(--forth-bg-color),
+    0 0 100px var(--forth-bg-color), 0 0 200px var(--forth-bg-color);
 
 }
 
