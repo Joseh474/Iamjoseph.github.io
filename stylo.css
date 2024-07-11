@@ -14,11 +14,13 @@ body {
 }
 
 header {
-    color: white;
+      color: white;
     display: flex;
     align-items: center;
     height: 100vh;
-    justify-content: space-between;
+   
+    gap: 200px;
+    padding: 0 50px; 
 }
 
 .container {
