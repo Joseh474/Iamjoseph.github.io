@@ -1,1 +1,233 @@
+:root {
+    --cube-width: 400px;
+    --translateZ: 200px;
+    --rotation-speed: 20s;
+    --main-color:orangered;
+}
 
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: "Poppins", sans-serif;
+    background: black;
+}
+
+header {
+    color: white;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    justify-content: space-between;
+}
+
+.container {
+    max-width: 1500px;
+    margin: 0 auto;
+  
+}
+
+header .sub-heading {
+    font-size: 24px;
+    margin: 0;
+}
+
+
+header h1 {
+    margin: 0;
+    font-size: 100px;
+}
+
+span {
+    color: orangered;
+    animation: glow-text 1.5s infinite alternate;
+}
+@keyframes glow {
+    from {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    to {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+    }
+}
+
+@keyframes glow-text {
+    from {
+        text-shadow: 0 0 10px rgba(255, 69, 0, 0.5), 0 0 20px rgba(255, 69, 0, 0.5), 0 0 30px rgba(255, 69, 0, 0.5), 0 0 40px rgba(255, 69, 0, 0.5);
+    }
+    to {
+        text-shadow: 0 0 20px rgba(255, 69, 0, 1), 0 0 30px rgba(255, 69, 0, 1), 0 0 40px rgba(255, 69, 0, 1), 0 0 50px rgba(255, 69, 0, 1);
+    }
+}
+
+.cube-container {
+    perspective: 1000px;
+    box-shadow: 0 0 5px var(--main-color),
+    0 0 25px var(--main-color), 0 0 50px var(--main-color),
+    0 0 100px var(--main-color), 0 0 200px var(--main-color);
+}
+
+.cube-container .cube {
+    width: var(--cube-width);
+    height: var(--cube-width);
+    transform-style: preserve-3d;
+    animation: rotateCube var(--rotation-speed) linear infinite;
+    
+}
+
+@keyframes rotateCube {
+    0% {
+        transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    }
+    25% {
+        transform: rotateX(90deg) rotateY(90deg) rotateZ(0deg);
+    }
+    50% {
+        transform: rotateX(180deg) rotateY(180deg) rotateZ(0deg);
+    }
+    75% {
+        transform: rotateX(270deg) rotateY(270deg) rotateZ(0deg);
+    }
+    100% {
+        transform: rotateX(360deg) rotateY(360deg) rotateZ(0deg);
+    }
+}
+
+.cube-container .cube-face {
+    width: var(--cube-width);
+    height: var(--cube-width);
+    font-size: 30px;
+    position: absolute;
+    background: yellow;
+    color: black;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    }
+    to {
+        box-shadow: 0 0 40px rgba(255, 255, 255, 1);
+    }
+}
+
+.cube-container .front {
+    background: red;
+    transform: translateZ(var(--translateZ));
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+}
+
+.cube-container .back {
+    background: rgb(38, 182, 218);
+    transform: rotateY(180deg) translateZ(var(--translateZ));
+    box-shadow: 0 0 20px rgba(38, 182, 218, 0.6);
+}
+
+.cube-container .left {
+    background: rgb(21, 4, 252);
+    transform: rotateY(-90deg) translateZ(var(--translateZ));
+    box-shadow: 0 0 20px rgba(21, 4, 252, 0.6);
+}
+
+.cube-container .right {
+    background: rgb(14, 207, 62);
+    transform: rotateY(90deg) translateZ(var(--translateZ));
+    box-shadow: 0 0 20px rgba(14, 207, 62, 0.6);
+}
+
+.cube-container .top {
+    background: rgb(255, 136, 0);
+    transform: rotateX(90deg) translateZ(var(--translateZ));
+    box-shadow: 0 0 20px rgba(255, 136, 0, 0.6);
+}
+
+.cube-container .bottom {
+    background: rgb(247, 8, 139);
+    transform: rotateX(-90deg) translateZ(var(--translateZ));
+    box-shadow: 0 0 20px rgba(247, 8, 139, 0.6);
+}
+
+/* Breakpoints for responsiveness */
+@media (max-width: 1200px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+    header h1 {
+        font-size: 80px;
+    }
+    header .sub-heading {
+        font-size: 20px;
+    }
+    .cube-container .cube {
+        --cube-width: 250px;
+        --translateZ: 125px;
+    }
+    .cube-container .cube-face {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 60px;
+    }
+    header .sub-heading {
+        font-size: 18px;
+    }
+    .cube-container .cube {
+        --cube-width: 200px;
+        --translateZ: 100px;
+    }
+    .cube-container .cube-face {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 40px;
+    }
+    header .sub-heading {
+        font-size: 16px;
+    }
+    .cube-container .cube {
+        --cube-width: 150px;
+        --translateZ: 75px;
+    }
+    .cube-container .cube-face {
+        font-size: 15px;
+    }
+}
+.glow-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+   
+    animation: glow 1.5s infinite alternate;
+    border-radius: 8px;
+    box-shadow: 0 0 5px var(--main-color),
+    0 0 25px var(--main-color), 0 0 50px var(--main-color),
+    0 0 100px var(--main-color), 0 0 200px var(--main-color);
+
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 0, 0, 0.3); /* Initial shadow */
+    }
+    to {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 0, 0, 0.6); /* Extended glow effect */
+    }
+}
