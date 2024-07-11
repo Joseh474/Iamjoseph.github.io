@@ -9,29 +9,58 @@
 }
 
 :root{
-    --bg-color: #3d3b3b;
-    --second-bg-color:#000000;
-    --text-color:#fff;
-    --second-color:#ccc;
+    --bg-color:linear-gradient(135deg, #000000, #434343);
+    --second-bg-color: linear-gradient(135deg, #000000, #434343);
+    --third-bg-color:rgb(66, 61, 61);
+    --text-color:#e2d8d8;
+    --second-color:#ebdcdc;
     --main-color:#ff4d05;
     --big-font:5rem;
     --h2-font:3rem;
     --p-font:1.1rem;
 }
-.dark-theme{
-    --bg-color: rgb(224, 219, 219);
-    --second-bg-color:white;
-    --text-color:#1b1919;
-    --second-color:#0c0c0c;
+body.dark{
+    --bg-color: linear-gradient(135deg, #ffffff, #ffff99);
+    --second-bg-color:linear-gradient(135deg, #ffffff, #ffff99);
+    --text-color:#0f0f0d;
+    --second-color:#020101;
+    --third-bg-color:white;
 }
-#icon{
-    width: 20px;
-    cursor: pointer;
+.toggle{
+    height: 17px;
+    width: 35px;
+    background-color: #dadce2;
+    border-radius: 100px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;height: 17px;
+    position: absolute; /* Use absolute positioning */
+    top: 50%; /* Center vertically */
+    right: 50px; /* Adjust as needed to position from the right edge */
+    transform: translateY(-50%); /* Center vertically */
+
+}
+.toggle::before{
+    content: "";
+    position: absolute;
+    height: 14px;
+    width:14px;
+    background:linear-gradient(45deg, #1a237e, #4a148c);
+    border-radius: 50px;
+    top:50%;
+    left:18px;
+    transform: translateY(-50%);
+    transition: all 0.4s ease-in-out;
+}
+
+.toggle.active::before{
+     background-color: #dadce2;  
+    left: calc(100% - 11px - 18px);
 }
 
 body{
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    background: var(--bg-color);
+  background-blend-mode: screen;
+   transition: all 0.4s ease-in-out;
 
 }
 
@@ -41,19 +70,20 @@ header{
     top:0;
     right:0;
     z-index: 1000;
-    display:flex;
+    display:inline-flex;
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid transparent;
-    padding: 22px 15%;
+    padding: 12px 12%;
     transition: all .45s ease;
+    background: var(--bg-color);
 }
 
 .logo{
     color: var(--text-color);
-    font-size: 35px;
-    font-weight: 700;
-    letter-spacing: 1px;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0.7px;
 }
 
 span{
@@ -61,25 +91,35 @@ span{
     
 }
 .navlist{
-    display:flex;
+    display:inline-flex;
+    list-style: none;
+    
 }
 
 .navlist a{
-    color: var(--second-color);
-    font-size: 17px;
-    font-weight: 500;
-    margin: 0 25px;
+    color: var(--text-color);
+    font-size: 15px;
+    font-weight: 400;
+    margin: 0 40px;
     transition: all .45s ease;
+    padding: 6px;
+    border-radius: 6px;
+    
    
 }
 
 .navlist a:hover{
-    color: var(--main-color);
+    background: var(--main-color);
+    box-shadow: 0 0 5px var(--main-color),
+    0 0 25px var(--main-color), 0 0 50px var(--main-color),
+    0 0 100px var(--main-color), 0 0 200px var(--main-color);
+
 }
 
 
 .navlist a.active{
-    color: var(--main-color);
+    background: var(--main-color);
+   
 }
 
 #menu-icon{
@@ -87,95 +127,166 @@ span{
     color: var(--text-color);
     z-index: 10001;
     cursor: pointer;
-    margin-left: 25px;
+    margin-left: 100px;
     display: none;
 }
 
 section{
-    padding:160px 15% 120px
+    padding:160px 15% 120px;
 }
 
-.home{
+
+
+.home {
     position: relative;
     height: 100vh;
     width: 100%;
-    background-color: var(--second-bg-color);
+    background: var(--second-bg-color);
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    overflow: hidden; 
+    padding: 10%;
 }
 
-.slide{
+.home::before {
+    content: '';
+    background: var(--second-bg-color);
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-right: 50vw solid var(--main-color);
+    border-bottom: 100vh solid var(--main-color)  ;
+    z-index:0;
+    box-shadow: 0 0 5px var(--main-color),
+    0 0 25px var(--main-color), 0 0 50px var(--main-color),
+    0 0 100px var(--main-color), 0 0 200px var(--main-color);
+
+}
+
+.triangle-image {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.triangle-image img {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    clip-path: polygon(100% 0, 0 100%, 100% 100%);
+}
+
+.home-text {
+    position: relative;
+    z-index: 2; /* Ensure text is above the triangle */
+    padding-right: 55vw; /* Add padding to avoid overlap with the triangle */
+}
+
+.slide {
     margin-bottom: 20px;
 }
-.one{
+
+.one, .two {
     display: inline-block;
+    font-size: 20px;
+    font-weight: 500;
+    opacity: 0; /* Start hidden */
+    animation: typing 1.5s steps(20) forwards; /* Apply typing animation */
+}
+
+.one {
     margin-right: 15px;
-    height:32px;
+    height: 32px;
     padding: 0 15px;
     line-height: 32px;
-    font-size: 20px;
-    font-weight: 500;
     border-radius: 5px;
     background: var(--main-color);
-    color:var(--text-color)
+    color: var(--text-color);
+    animation-delay: 0s; /* No delay for the first span */
 }
 
-.two{
-    display: inline-block;
+.two {
     color: var(--second-color);
-    font-size: 20px;
-    font-weight: 500;
+    animation-delay: 1.5s; /* Delay to start after the first span */
 }
 
-.home-text h1{
+.typing-h1, .typing-h3 {
+    opacity: 0; /* Start hidden */
+    animation: typing 2s steps(30) forwards; /* Apply typing animation */
+}
+
+.typing-h1 {
     font-size: var(--big-font);
     font-weight: 700;
     color: var(--text-color);
     line-height: 1.1;
     margin: 0 0 8px;
-    
+    animation-delay: 3s; /* Delay to start after the second span */
 }
 
-.home-text h3{
+.typing-h3 {
     line-height: 1.1;
     font-weight: 700;
     color: var(--text-color);
     margin: 0 0 35px;
     font-size: 3rem;
-
+    animation-delay: 5s; /* Delay to start after the h1 element */
 }
 
-.home-text p{
+@keyframes typing {
+    to {
+        opacity: 1;
+    }
+}
+
+.home-text p {
     color: var(--second-color);
     font-size: var(--p-font);
     line-height: 1.8;
     margin-bottom: 40px;
 }
 
-.button{
-    display:inline-flex;
+.button {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 0 5px var(--main-color),
+                0 0 25px var(--main-color);
 
 }
 
-.btn{
+.btn {
     display: inline-block;
-    padding:12px 28px;
+    padding: 12px 28px;
     background: var(--main-color);
     border-radius: 5px;
-    color:var(--text-color);
-    font-size:1rem;
+    color: var(--text-color);
+    font-size: 1rem;
     letter-spacing: 1px;
     font-weight: 600;
     transition: all .45s ease;
+    
 }
 
-.btn:hover{
+.btn:hover {
     transform: scale(0.8);
+    box-shadow: 0 0 5px var(--main-color),
+                0 0 25px var(--main-color), 0 0 50px var(--main-color),
+                0 0 100px var(--main-color), 0 0 200px var(--main-color);
+
 }
-.btn2{
+
+.btn2 {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -185,12 +296,12 @@ section{
     margin: 35px;
 }
 
-.btn2 span i{
+.btn2 span i {
     height: 55px;
     width: 55px;
     background: red;
-    color:var(--text-color);
-    display:flex;
+    color: var(--text-color);
+    display: flex;
     align-items: center;
     justify-content: center;
     font-size: 35px;
@@ -199,16 +310,16 @@ section{
     transition: all .45s ease;
 }
 
-.btn2:hover{
-
+.btn2:hover {
     transform: scale(1.1) translateY(5px);
 }
 
-header.sticky{
+header.sticky {
     background: var(--second-bg-color);
     border-bottom: 1px solid #ffffff1a;
     padding: 12px 15%;
 }
+
 
 .about{
     display: grid;
@@ -222,6 +333,7 @@ header.sticky{
     height: auto;
     width:100%;
     border-radius:8px;
+   
 
 }
 .about h2{
@@ -272,7 +384,7 @@ header.sticky{
     align-items: center;
     gap: 5.5rem;
     margin-top: 5rem;
-    box-shadow: 0 px 8px rgba(196, 196, 204, 0.1); /* Adjust shadow values as needed */
+    box-shadow: 0 px 8px rgba(196, 196, 204, 0.1); 
 
 }
 
@@ -281,6 +393,7 @@ header.sticky{
     padding: 35px 45px;
     border-radius: 8px;
     transition:all .45s ease;
+    
    
 
 }
@@ -327,7 +440,7 @@ header.sticky{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color:#2a2a2a;
+    background-color:var(--third-bg-color);
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 20px;
@@ -339,11 +452,21 @@ header.sticky{
 h4{
     text-align: center;
 }
+h5{
+    color: var(--text-color) ;
+}
+h2{
+    color: var(--text-color);
+}
 
 .read:hover{
     letter-spacing: 1px;
-    background: #1c1fe099;
+    background: var(--main-color);
     color: var(--text-color);
+    box-shadow: 0 0 5px var(--main-color),
+    0 0 25px var(--main-color), 0 0 50px var(--main-color),
+    0 0 100px var(--main-color), 0 0 200px var(--main-color);
+
 }
 
 .box:hover{
@@ -373,12 +496,13 @@ h4{
     border-radius: 8px;
     display: block;
     transition: transform 0.5s;
+    
 }
 
 .layer{
     width: 100%;
     height: 0;
-    background: linear-gradient(rgba(0,0,0,0.1), #fbfbfc);
+    background: linear-gradient(rgba(0,0,0,0.1), var(--main-color));
     position: absolute ;
     border-radius: 8px;
     left: 0;
@@ -390,19 +514,23 @@ h4{
     justify-content: center;
     text-align: center;
     padding: 0 40px;
-    transition: height 0.5s;
+    transition: height 1s;
 }
 
 .layer h5{
     font-size: 20px;
     font-weight: 600;
     margin-bottom: 15px;
+    color: cornsilk;
+
 }
 
 .layer p{
     columns: var(--second-color);
     font-size: 1rem;
     line-height: 1.8;
+    color: cornsilk;
+
 
 }
 
@@ -487,17 +615,24 @@ h4{
     border-radius: 8px;
     margin-right: 15px;
     transition: all .45s ease;
+    
 }
 
 .contact-icons i:hover{
     background: var(--text-color);
     color: var(--main-color);
+    box-shadow: 0 0 5px var(--main-color),
+    0 0 25px var(--main-color), 0 0 50px var(--main-color),
+    0 0 100px var(--main-color), 0 0 200px var(--main-color);
+
+   
+
 }
 .contact-form form input,
 form textarea{
     width: 100%;
     padding: 14px;
-    background: var(--bg-color);
+    background: var(--third-bg-color);
     color: var(--text-color);
     border: none;
     outline: none;
@@ -523,6 +658,10 @@ form textarea{
 .contact-form .submit:hover{
     transform: scale(1.1);
     cursor:pointer;
+    box-shadow: 0 0 5px var(--main-color),
+    0 0 25px var(--main-color), 0 0 50px var(--main-color),
+    0 0 100px var(--main-color), 0 0 200px var(--main-color);
+
 }
 
 .end{
@@ -533,6 +672,7 @@ form textarea{
     justify-content: center;
     gap:2rem;
     background: var(--bg-color);
+    
 }
 
 .last-text p{
@@ -608,87 +748,168 @@ form textarea{
     font-size: 14px;
   }
 
-@media(max-width: 1480px){
-    header{
+
+  
+@media (max-width: 768px) {
+    .owl-carousel .item {
+        padding: 10px;
+    }
+
+    .content {
+        padding: 15px;
+    }
+
+    p {
+        font-size: 0.9rem;
+    }
+
+    h2 {
+        font-size: 1rem;
+    }
+}
+  @media(max-width: 1480px) {
+    header {
         padding: 12px 2.5%;
         transition: .1s;
     }
-    header.sticky{
-        padding: 10px2.5%;
+    header.sticky {
+        padding: 10px 2.5%;
         transition: .1s;
     }
-    section{
+    section {
         padding: 110px 3% 60px;
-    
     }
     .end {
         padding: 15px 3%;
-
     }
 }
 
-@media(max-width: 1100px){
-    :root{
-        --big-font:4rem;
-        --h2-font:2.5rem;
+@media(max-width: 1200px) {
+    .home::before {
+        border-right-width: 60vw;
+    }
+
+    .triangle-image {
+        width: 60vw;
+    }
+
+    .home-text {
+        padding-right: 65vw;
+    }
+}
+
+@media(max-width: 1100px) {
+    :root {
+        --big-font: 4rem;
+        --h2-font: 2.5rem;
         --p-font: 1rem;
         transition: .1s;
     }
-    .home-text h3{
+    .home-text h3 {
         font-size: 2.5rem;
     }
-    .home{
+    .home {
         height: 87vh;
     }
 }
 
-@media(max-width: 920px){
-    .about{
+@media(max-width: 992px) {
+    .home::before {
+        border-right-width: 70vw;
+    }
+
+    .triangle-image {
+        width: 70vw;
+    }
+
+    .home-text {
+        padding-right: 75vw;
+    }
+}
+
+@media(max-width: 920px) {
+    .about {
         grid-template-columns: 1fr;
     }
-    .about-img{
+    .about-img {
         text-align: center;
         order: 2;
     }
-    .about-img img{
+    .about-img img {
         width: 100%;
         height: auto;
         max-width: 100%;
     }
-    .contact{
+    .contact {
         grid-template-columns: 1fr;
     }
 }
 
-@media(max-width: 840px){
-    #menu-icon{
+@media(max-width: 840px) {
+    #menu-icon {
         display: block;
     }
-    .navlist{
+    .navlist {
         position: absolute;
         top: -1000px;
         right: 0;
         left: 0;
         display: flex;
         flex-direction: column;
-        background: var(--bg-color);
-        text-align: center;
+        background: var(--second-bg-color);
+        text-align: left;
         transition: all .45s ease;
+        color: #000;
     }
-    .navlist a{
+    .navlist a {
         display: block;
         margin: 17px;
         font-size: 20px;
         transition: all .45s ease;
         color: var(--text-color);
     }
-    .navlist a:hover{
+    .navlist a:hover {
         color: var(--main-color);
     }
-    .navlist a.active{
+    .navlist a.active {
         color: var(--text-color);
     }
-    .navlist.open{
+    .navlist.open {
         top: 100%;
     }
+}
+
+@media(max-width: 768px) {
+    .home::before {
+        border-right-width: 80vw;
     }
+
+    .triangle-image {
+        width: 80vw;
+    }
+
+    .home-text {
+        padding-right: 85vw;
+    }
+}
+
+@media(max-width: 576px) {
+    .home::before {
+        border-right-width: 100vw;
+    }
+
+    .triangle-image {
+        width: 100vw;
+    }
+
+    .home-text {
+        padding-right: 100vw;
+    }
+
+    .home-text {
+        padding-right: 0;
+        padding-left: 10px;
+        padding-right: 10px;
+        text-align: center;
+    }
+}
