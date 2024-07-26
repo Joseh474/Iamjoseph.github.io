@@ -9,8 +9,8 @@
 }
 
 :root{
-    --bg-color:linear-gradient(135deg, #000000, #434343);
-    --second-bg-color: linear-gradient(135deg, #000000, #434343);
+    --bg-color:linear-gradient(-45deg, #000000, #434343, rgb(45, 45, 87));
+    --second-bg-color: linear-gradient(135deg, #000000, #434343, rgb(74, 74, 117));
     --third-bg-color:rgb(66, 61, 61);
     --text-color:#e2d8d8;
     --second-color:#ebdcdc;
@@ -21,12 +21,12 @@
     --forth-bg-color:rgb(66, 61, 61);
 }
 body.dark{
-    --bg-color: linear-gradient(135deg, #ffffff, #ffff99);
-    --second-bg-color:linear-gradient(135deg, #ffffff, #ffff99);
+    --bg-color: linear-gradient(135deg, #ffffff, #ffff99, rgb(170, 158, 47));
+    --second-bg-color:linear-gradient(135deg, #ffffff, #ffff99, rgb(200, 223, 100));
     --text-color:#0f0f0d;
     --second-color:#020101;
     --third-bg-color:white;
-     --forth-bg-color:yellow;
+    --forth-bg-color:yellow;
 }
 .toggle{
     height: 17px;
@@ -66,13 +66,13 @@ body{
 
 }
 
-header{
+header {
     position: fixed;
     width: 100%;
-    top:0;
-    right:0;
+    top: 0;
+    right: 0;
     z-index: 1000;
-    display:inline-flex;
+    display: inline-flex;
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid transparent;
@@ -81,24 +81,24 @@ header{
     background: var(--bg-color);
 }
 
-.logo{
+.logo {
     color: var(--text-color);
     font-size: 20px;
     font-weight: 500;
     letter-spacing: 0.7px;
+    animation: glow-text 1.5s infinite alternate;
 }
 
-span{
-    color:var(--main-color);
-    
+span {
+    color: var(--main-color);
 }
-.navlist{
-    display:inline-flex;
+
+.navlist {
+    display: inline-flex;
     list-style: none;
-    
 }
 
-.navlist a{
+.navlist a {
     color: var(--text-color);
     font-size: 15px;
     font-weight: 400;
@@ -106,25 +106,20 @@ span{
     transition: all .45s ease;
     padding: 6px;
     border-radius: 6px;
-    
-   
 }
 
-.navlist a:hover{
+.navlist a:hover {
     background: var(--main-color);
     box-shadow: 0 0 5px var(--main-color),
     0 0 25px var(--main-color), 0 0 50px var(--main-color),
     0 0 100px var(--main-color), 0 0 200px var(--main-color);
-
 }
 
-
-.navlist a.active{
+.navlist a.active {
     background: var(--main-color);
-   
 }
 
-#menu-icon{
+#menu-icon {
     font-size: 35px;
     color: var(--text-color);
     z-index: 10001;
@@ -133,6 +128,42 @@ span{
     display: none;
 }
 
+.dropdown-menu {
+    position: relative;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--bg-color);
+    padding: 10px;
+    z-index: 1000;
+    list-style: none;
+    border-radius: 6px;
+    
+}
+
+.dropdown li {
+    margin: 5px 0;
+}
+
+.dropdown li a {
+    color: var(--text-color);
+    padding: 10px 20px;
+    display: block;
+    transition: all .7s ease;
+    border-radius: 6px;
+}
+
+.dropdown li a:hover {
+    background: var(--main-color);
+}
+
+.dropdown-menu:hover .dropdown {
+    display: block;
+}
 section{
     padding:160px 15% 120px;
 }
@@ -152,7 +183,7 @@ section{
 }
 
 .home::before {
-   content: '';
+    content: '';
     background: var(--second-bg-color);
     position: absolute;
     top: 0;
@@ -436,20 +467,7 @@ header.sticky {
     position: relative; /* Make sure it's a positioned parent */
 }
 
-.additional-content {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color:var(--third-bg-color);
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 20px;
-    max-width: 100%;
-    height: auto;
-    z-index: 9999;
-}
+
 
 h4{
     text-align: center;
