@@ -19,37 +19,32 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
+  <!-- Add this line in the head section, after your main CSS -->
+  <link rel="stylesheet" href="style.css">
 
+  <!-- Add this in the head section of your HTML -->
+  <script src="https://unpkg.com/scrollreveal"></script>
 
 </head>
 <body>
+    
     <!---header desighn-->
     <header>
         <a href="#" class="logo"><i class='bx bxl-stripe'></i>sej<span>o</span>hsoft</a>
     
         <ul class="navlist">
-            <li><a href="#home" class="active"><i class='bx bx-home'></i>Home</a></li>
-            <li><a href="#about"> <i class='bx bxs-user'></i>About Me</a></li>
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
             <li class="dropdown-menu">
-                <a href="#services"><i class='bx bxs-chevron-down-circle' ></i>services</a>
-                <ul class="dropdown">
-                    <li><a href="#web desighn">web desighn</a></li>
-                    <li><a href="#">web dev</a></li>
-                    <li><a href="#">c. desighn</a></li>
-                    <li><a href="#">Transcription</a></li>
-                    <li><a href="#">AC. writting</a></li>
-                    <li><a href="#"><i class='bx bx-video'></i> editng</a></li>
-                </ul>
-            </li>
-            <li><a href="#portfolio"><i class='bx bxs-notepad' ></i>Portfolio</a></li>
-            <li class="dropdown-menu">
-                <a href="#"><i class='bx bxs-chevron-down-circle' ></i>Languages</a>
+                <a href="#"><i class='bx bxs-chevron-down-circle'></i>Languages</a>
                 <ul class="dropdown">
                     <li><a href="#"><i class='bx bxl-html5'></i>HTML</a></li>
-                    <li><a href="#"><i class='bx bxs-file-css' ></i>CSS</a></li>
-                    <li><a href="#"><i class='bx bxs-file-js' ></i>jss</a></li>
-                    <li><a href="#"><i class='bx bxl-php' ></i></i>PHP</a></li>
-                    <li><a href="#"><i class='bx bxl-postgresql' ></i>SQL</a></li>
+                    <li><a href="#"><i class='bx bxs-file-css'></i>CSS</a></li>
+                    <li><a href="#"><i class='bx bxs-file-js'></i>JavaScript</a></li>
+                    <li><a href="#"><i class='bx bxl-php'></i>PHP</a></li>
+                    <li><a href="#"><i class='bx bxl-postgresql'></i>SQL</a></li>
                 </ul>
             </li>
             <li><a href="#contact">Contact Me</a></li>
@@ -60,30 +55,52 @@
     
     <!---home section desighn-->
     <section class="home" id="home">
-        <div class="triangle-image">
-        </div>
-        <div class="home-text">
-            <div class="slide">
-                <span class="one">Hello</span>
-                <span class="two">I'm</span>
+        <div class="animated-shape">
+            <div class="shape-container">
+                <div class="shape"></div>
+                <div class="shape"></div>
+                <div class="shape"></div>
             </div>
-            <h1 class="typing-h1">Joseph</h1>
-            <h3 class="typing-h3">CSS <span style="color: blue;">Designer</span></h3>
-            <p>Web Developer with 2+ years of experience that keeps my customers<br>
-               coming back for my services. I make the best effort to meet their needs.</p>
-            <a href="mailto:josehmuia474@gmail.com" class="btn">Say Hello</a>
-            <a href="#" class="btn2"><span><i class='bx bx-play'></i></span>Enjoy My Services</a>
-            <div class="contact-icons">
-                <a target="_blank" href="mailto:josehmuia474@gmail.com"><i class='bx bxl-gmail' ></i></a>
-                <a href="#"><i class='bx bxl-twitter'></i></a>
-                <a target="_blank" href="https://www.instagram.com/sejo42_"><i class='bx bxl-instagram'></i></a>
-                <a target="_blank" href="https://wa.me/+254740375068"><i class='bx bxl-whatsapp'></i></a>
-                <a href="http://"><i class='bx bxl-linkedin'></i></a>
-                <a href="http://"><i class='bx bxl-github'></i></a>
-             </div>
         </div>
 
-        
+        <div class="home-content">
+            <div class="home-text">
+                <div class="slide">
+                    <span class="one">Hello</span>
+                    <span class="two">I'm</span>
+                </div>
+                <h1 class="typing-h1">Joseph</h1>
+                <h3 class="typing-h3">Full Stack <span>Developer</span></h3>
+                <p class="animate-text">Passionate web developer with 2+ years of experience in creating 
+                   beautiful, functional, and responsive websites. Specialized in both 
+                   front-end and back-end development.</p>
+                <div class="button-group">
+                    <a href="mailto:josehmuia474@gmail.com" class="btn glow-btn">Say Hello</a>
+                    <a href="#services" class="btn2"><span><i class='bx bx-play'></i></span>My Services</a>
+                </div>
+                <div class="social-icons">
+                    <a href="#" class="social-link"><i class='bx bxl-twitter'></i></a>
+                    <a href="https://www.instagram.com/sejo42_" class="social-link"><i class='bx bxl-instagram'></i></a>
+                    <a href="https://wa.me/+254740375068" class="social-link"><i class='bx bxl-whatsapp'></i></a>
+                    <a href="#" class="social-link"><i class='bx bxl-linkedin'></i></a>
+                    <a href="#" class="social-link"><i class='bx bxl-github'></i></a>
+                </div>
+            </div>
+            
+            <div class="animated-shape">
+                <div class="shape-container">
+                    <div class="shape"></div>
+                    <div class="shape"></div>
+                    <div class="shape"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+            <p>Scroll Down</p>
+        </div>
     </section>
 
     <!---about section desighn-->
@@ -401,68 +418,77 @@
      <!---end section desighn--><footer>
         
    
-     <section class="end">
-        <div class="footerLeft">
-            <div class="footerMenu">
-                <h1 class="fMenuTitle">About Me</h1>
-                <ul class="fList">
-                    <li class="fListItem">Company</li>
-                    <li class="fListItem">Contact</li>
-                    <li class="fListItem">Careers</li>
-                    <li class="fListItem">Affiliates</li>
-                    <li class="fListItem">Stores</li>
-                </ul>
-            </div>
-            <div class="footerMenu">
-                <h1 class="fMenuTitle">Useful Links</h1>
-                <ul class="fList">
-                    <li class="fListItem">Support</li>
-                    <li class="fListItem">Refund</li>
-                    <li class="fListItem">FAQ</li>
-                    <li class="fListItem">Feedback</li>
-                    <li class="fListItem">Stories</li>
-                </ul>
-            </div>
-            <div class="footerMenu">
-                <h1 class="fMenuTitle">Products</h1>
-                <ul class="fList">
-                    <li class="fListItem">Web development</li>
-                    <li class="fListItem">Web desighn</li>
-                    <li class="fListItem">Academic writting</li>
-                    <li class="fListItem">Transcription</li>
-                    <li class="fListItem">Web mantainance</li>
-                </ul>
-            </div>
-        </div>
-        <div class="footerRight">
-            
-            <div class="footerRightMenu">
-                <h1 class="fMenuTitle">Follow Me on</h1>
-                <div class="fIcons">
-                    <img src="image/facebook.png" alt="" class="fIcon">
-                    <img src="image/twitter.png" alt="" class="fIcon">
-                    <img src="image/whatsapp.png" alt="" class="fIcon">
-                    <img src="image/instagram.png" alt="" class="fIcon">
-                </div>
-            </div>
-          
-        </div>
-        <div class="last-text">
-            <p> Copyright &copy; 2024 by Joseph Mwanzia All Rights Reserved.</p>
-        </div>
-        
-
-        <div class="top">
-            <a href="#home"><i class='bx bx-up-arrow-alt'></i></a>
-        </div>
-     </section>
-    </footer>
-
+     
 
     <!---custom js link---------------------------->
     <script type="text/javascript" src="script.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Add this right after the body tag opens -->
+    <div class="loader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <!-- Add this before the closing body tag -->
+    <button id="scroll-top" aria-label="Scroll to top">
+        <i class='bx bx-up-arrow-alt'></i>
+    </button>
+
+    <!-- Add this new footer section at the bottom of the body -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Me</h3>
+                <p>Creative web developer passionate about crafting beautiful and functional websites. Let's work together to bring your vision to life.</p>
+                <div class="footer-social">
+                    <a href="#"><i class='bx bxl-twitter'></i></a>
+                    <a href="#"><i class='bx bxl-instagram'></i></a>
+                    <a href="#"><i class='bx bxl-linkedin'></i></a>
+                    <a href="#"><i class='bx bxl-github'></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul>
+                    <li>Web Design</li>
+                    <li>Web Development</li>
+                    <li>Creative Design</li>
+                    <li>Video Editing</li>
+                    <li>Content Writing</li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p><i class='bx bx-phone'></i> +254 746593229</p>
+                <p><i class='bx bx-envelope'></i> josehmuia474@gmail.com</p>
+                <p><i class='bx bx-map'></i> Nairobi, Kenya</p>
+                <div class="footer-newsletter">
+                    <h4>Subscribe Newsletter</h4>
+                    <form>
+                        <input type="email" placeholder="Enter your email">
+                        <button type="submit"><i class='bx bx-send'></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Joseph Mwanzia. All rights reserved.</p>
+        </div>
+    </footer>
 
 </body>
 </html
