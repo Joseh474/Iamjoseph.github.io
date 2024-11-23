@@ -237,60 +237,151 @@ document.addEventListener('DOMContentLoaded', function() {
     checkSecurityHeaders();
     incrementPageVisits();
 
-    // Read More Popup Functionality
+    // Service box click functionality for mobile
+    if (window.innerWidth <= 550) {
+        const serviceBoxes = document.querySelectorAll('.services-content .box');
+        
+        serviceBoxes.forEach(box => {
+            box.addEventListener('click', function(e) {
+                // If box is already expanded, collapse it
+                if (this.classList.contains('expanded')) {
+                    this.classList.remove('expanded');
+                    return;
+                }
+                
+                // Collapse all other boxes
+                serviceBoxes.forEach(otherBox => {
+                    otherBox.classList.remove('expanded');
+                });
+                
+                // Expand clicked box
+                this.classList.add('expanded');
+                
+                // Scroll expanded box into view
+                setTimeout(() => {
+                    this.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 300);
+            });
+        });
+    }
+
+    // Create particles
+    function createParticles() {
+        const particlesContainer = document.createElement('div');
+        particlesContainer.className = 'particles';
+        document.body.appendChild(particlesContainer);
+
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.animationDuration = (Math.random() * 15 + 5) + 's';
+            particle.style.animationDelay = (Math.random() * 5) + 's';
+            particlesContainer.appendChild(particle);
+        }
+    }
+
+    // Initialize particles on load
+    window.addEventListener('load', createParticles);
+
+    // Smooth scroll behavior
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Add parallax effect to shapes
+    window.addEventListener('scroll', () => {
+        const shapes = document.querySelectorAll('.shape');
+        const scrolled = window.pageYOffset;
+        
+        shapes.forEach((shape, index) => {
+            const speed = 0.1 + (index * 0.1);
+            shape.style.transform = `translateY(${scrolled * speed}px)`;
+        });
+    });
+
+    // Read More functionality
+    const serviceBoxes = document.querySelectorAll('.services-content .box');
+    
+    serviceBoxes.forEach(box => {
+        const readBtn = box.querySelector('.read');
+        
+        if (readBtn) {
+            readBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Toggle expanded class
+                box.classList.toggle('expanded');
+                
+                // Smooth scroll to box if it's expanded
+                if (box.classList.contains('expanded')) {
+                    box.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'center'
+                    });
+                }
+                
+                // Close other boxes
+                serviceBoxes.forEach(otherBox => {
+                    if (otherBox !== box && otherBox.classList.contains('expanded')) {
+                        otherBox.classList.remove('expanded');
+                    }
+                });
+            });
+        }
+    });
+
+    // Popup functionality
+    const popup = document.querySelector('.popup-overlay');
+    const popupClose = document.querySelector('.popup-close');
+    const popupTitle = document.querySelector('.popup-title');
+    const popupBody = document.querySelector('.popup-body');
+    
+    // Close popup when clicking the close button
+    if (popupClose) {
+        popupClose.addEventListener('click', () => {
+            popup.classList.remove('active');
+        });
+    }
+
+    // Close popup when clicking outside
+    if (popup) {
+        popup.addEventListener('click', (e) => {
+            if (e.target === popup) {
+                popup.classList.remove('active');
+            }
+        });
+    }
+
+    // Handle Read More buttons
     const readMoreButtons = document.querySelectorAll('.read');
     
     readMoreButtons.forEach(button => {
         button.addEventListener('click', function(e) {
             e.preventDefault();
-            e.stopPropagation(); // Prevent box click event
             
-            // Find the parent box and its additional content
             const box = this.closest('.box');
-            const additionalContent = box.querySelector('.additional-content');
+            const title = box.querySelector('h3').textContent;
+            const content = box.querySelector('.additional-content').innerHTML;
             
-            // Create popup
-            const popup = document.createElement('div');
-            popup.className = 'popup-overlay';
+            // Update popup content
+            popupTitle.textContent = title;
+            popupBody.innerHTML = content;
             
-            popup.innerHTML = `
-                <div class="popup-content">
-                    <span class="popup-close">&times;</span>
-                    ${additionalContent.innerHTML}
-                </div>
-            `;
-            
-            document.body.appendChild(popup);
-            
-            // Show popup with animation
-            setTimeout(() => {
-                popup.classList.add('active');
-            }, 10);
-            
-            // Close popup functionality
-            const closeBtn = popup.querySelector('.popup-close');
-            const closePopup = () => {
-                popup.classList.remove('active');
-                setTimeout(() => {
-                    popup.remove();
-                }, 300);
-            };
-            
-            closeBtn.onclick = closePopup;
-            
-            // Close on outside click
-            popup.onclick = (e) => {
-                if (e.target === popup) {
-                    closePopup();
-                }
-            };
-            
-            // Close on ESC key
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    closePopup();
-                }
-            });
+            // Show popup
+            popup.classList.add('active');
         });
+    });
+
+    // Close popup with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && popup.classList.contains('active')) {
+            popup.classList.remove('active');
+        }
     });
 });
